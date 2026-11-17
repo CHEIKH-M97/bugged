@@ -24,9 +24,20 @@ const OPTIONS = {
  * Monaco command because Monaco handles that shortcut itself
  * ("insert line below") before the page ever sees the key event.
  */
-export default function Editor({ value, onChange, onRun, language = "python", readOnly = false, height = "440px" }) {
+const LINE_HEIGHT = OPTIONS.lineHeight;
+const MIN_LINES = 8;
+const MAX_LINES = 24;
+
+/** Fit the editor to the code (plus room to type), within sensible bounds. */
+function heightFor(value) {
+    const lines = Math.min(MAX_LINES, Math.max(MIN_LINES, value.split("\n").length + 3));
+    return `${lines * LINE_HEIGHT + OPTIONS.padding.top + OPTIONS.padding.bottom}px`;
+}
+
+export default function Editor({ value, onChange, onRun, language = "python", readOnly = false }) {
     const onRunRef = useRef(onRun);
     onRunRef.current = onRun;
+    const height = heightFor(value);
 
     function handleMount(editor, monaco) {
         editor.addCommand(

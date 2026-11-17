@@ -2267,11 +2267,11 @@ ol.test-results {
     word-break: break-word;
 }
 
-.test-call .arrow {
+.test-info .test-call .arrow {
     color: #555;
 }
 
-.test-detail {
+.test-info .test-detail {
     color: #e48a8a;
     font-size: 13px;
     font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
