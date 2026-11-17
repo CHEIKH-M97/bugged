@@ -1,0 +1,49 @@
+{
+  "id": 1,
+  "title": "The Broken Average",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "operator precedence"
+  ],
+  "description": "average_of_three(a, b, c) should return the average of three numbers. It works for zeros, then falls apart.",
+  "entry": "average_of_three",
+  "code": "def average_of_three(a, b, c):\n    return a + b + c / 3\n",
+  "solution": "def average_of_three(a, b, c):\n    return (a + b + c) / 3\n",
+  "hint": "Division happens before addition. Which part of the expression is actually divided by 3?",
+  "explanation": "`/` binds tighter than `+`, so the code computes `a + b + (c / 3)`. Wrap the sum in parentheses so the whole total is divided: `(a + b + c) / 3`.",
+  "tests": [
+    {
+      "args": [
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        3,
+        3,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        1,
+        2,
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        10,
+        20,
+        30
+      ],
+      "expected": 20
+    }
+  ]
+}

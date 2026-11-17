@@ -1,0 +1,52 @@
+{
+  "id": 27,
+  "title": "Missing Cents",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "integer division",
+    "remainders"
+  ],
+  "description": "split_bill(total_cents, people) splits a bill into shares (in cents) that add up exactly to the total. When it doesn't divide evenly, the first people pay one cent more.",
+  "entry": "split_bill",
+  "code": "def split_bill(total_cents, people):\n    share = total_cents // people\n    return [share] * people\n",
+  "solution": "def split_bill(total_cents, people):\n    share, remainder = divmod(total_cents, people)\n    return [share + 1 if i < remainder else share for i in range(people)]\n",
+  "hint": "Add up the shares for a 100-cent bill split three ways.",
+  "explanation": "Floor division throws away the remainder: 3 × 33 = 99, so a cent goes missing. `divmod` returns both the share and the remainder, and the remainder is spread one cent at a time over the first few people.",
+  "tests": [
+    {
+      "args": [
+        90,
+        3
+      ],
+      "expected": [
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "args": [
+        100,
+        3
+      ],
+      "expected": [
+        34,
+        33,
+        33
+      ]
+    },
+    {
+      "args": [
+        10,
+        4
+      ],
+      "expected": [
+        3,
+        3,
+        2,
+        2
+      ]
+    }
+  ]
+}

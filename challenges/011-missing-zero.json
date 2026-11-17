@@ -1,0 +1,41 @@
+{
+  "id": 11,
+  "title": "Missing Zero",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "string formatting"
+  ],
+  "description": "format_duration(seconds) turns a number of seconds into a \"m:ss\" string, like a music player: 75 → \"1:15\".",
+  "entry": "format_duration",
+  "code": "def format_duration(seconds):\n    minutes = seconds // 60\n    rest = seconds % 60\n    return f\"{minutes}:{rest}\"\n",
+  "solution": "def format_duration(seconds):\n    minutes = seconds // 60\n    rest = seconds % 60\n    return f\"{minutes}:{rest:02d}\"\n",
+  "hint": "What does it print for 65 seconds?",
+  "explanation": "Seconds below 10 need a leading zero: 65 should be \"1:05\", not \"1:5\". The format spec `:02d` pads an integer to two digits with zeros.",
+  "tests": [
+    {
+      "args": [
+        75
+      ],
+      "expected": "1:15"
+    },
+    {
+      "args": [
+        600
+      ],
+      "expected": "10:00"
+    },
+    {
+      "args": [
+        65
+      ],
+      "expected": "1:05"
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected": "0:09"
+    }
+  ]
+}

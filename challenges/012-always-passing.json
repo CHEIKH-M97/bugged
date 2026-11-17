@@ -1,0 +1,41 @@
+{
+  "id": 12,
+  "title": "Always Passing",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "boolean logic"
+  ],
+  "description": "is_passing(grade) returns True for grades \"A\", \"B\" and \"C\", and False for anything else. Nobody ever fails...",
+  "entry": "is_passing",
+  "code": "def is_passing(grade):\n    return grade == \"A\" or \"B\" or \"C\"\n",
+  "solution": "def is_passing(grade):\n    return grade in (\"A\", \"B\", \"C\")\n",
+  "hint": "How does Python group `grade == \"A\" or \"B\" or \"C\"`?",
+  "explanation": "It reads as `(grade == \"A\") or \"B\" or \"C\"`. A non-empty string is truthy, so when the grade isn't \"A\" the expression returns the string \"B\", never False. Compare against each value, or use a membership test: `grade in (\"A\", \"B\", \"C\")`.",
+  "tests": [
+    {
+      "args": [
+        "A"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "B"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "F"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "D"
+      ],
+      "expected": false
+    }
+  ]
+}

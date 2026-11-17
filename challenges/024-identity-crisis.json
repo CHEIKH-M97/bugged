@@ -1,0 +1,59 @@
+{
+  "id": 24,
+  "title": "Identity Crisis",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "is vs ==",
+    "object identity"
+  ],
+  "description": "count_matches(a, b) counts the positions where two lists hold equal values. It works for small numbers.",
+  "entry": "count_matches",
+  "code": "def count_matches(a, b):\n    count = 0\n    for x, y in zip(a, b):\n        if x is y:\n            count += 1\n    return count\n",
+  "solution": "def count_matches(a, b):\n    count = 0\n    for x, y in zip(a, b):\n        if x == y:\n            count += 1\n    return count\n",
+  "hint": "`is` asks \"are these the same object?\", not \"are these equal?\".",
+  "explanation": "`is` compares identity: whether two names point to the same object in memory. CPython caches small integers (-5 to 256), so `is` happens to work for them, which hides the bug. Bigger numbers and most strings are separate objects. Use `==` to compare values. Keep `is` for `None`, `True` and `False`.",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        [
+          1000,
+          2000
+        ],
+        [
+          1000,
+          2000
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        [
+          "cat",
+          "dog"
+        ],
+        [
+          "cat",
+          "cow"
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

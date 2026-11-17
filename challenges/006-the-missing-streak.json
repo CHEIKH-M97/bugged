@@ -1,0 +1,59 @@
+{
+  "id": 6,
+  "title": "The Missing Streak",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "loops",
+    "edge cases"
+  ],
+  "description": "longest_streak(days) takes a list of True/False values (did you practice that day?) and returns the length of the longest run of True values.",
+  "entry": "longest_streak",
+  "code": "def longest_streak(days):\n    best = 0\n    current = 0\n\n    for active in days:\n        if active:\n            current += 1\n        else:\n            best = max(best, current)\n            current = 0\n\n    return best\n",
+  "solution": "def longest_streak(days):\n    best = 0\n    current = 0\n\n    for active in days:\n        if active:\n            current += 1\n            best = max(best, current)\n        else:\n            current = 0\n\n    return best\n",
+  "hint": "`best` is only updated when a streak is broken. What if the streak is still going when the list ends?",
+  "explanation": "The best streak is only recorded when a False ends it. A streak that runs to the end of the list is never compared. Either update `best` on every True, or do one last `max(best, current)` after the loop.",
+  "tests": [
+    {
+      "args": [
+        [
+          true,
+          true,
+          false,
+          true
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        [
+          false,
+          false
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        [
+          false,
+          true,
+          true,
+          true
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        [
+          true,
+          true,
+          true
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}

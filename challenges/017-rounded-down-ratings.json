@@ -1,0 +1,55 @@
+{
+  "id": 17,
+  "title": "Rounded Down Ratings",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "division"
+  ],
+  "description": "average_rating(ratings) returns the average of a list of star ratings. Every average comes out as a whole number.",
+  "entry": "average_rating",
+  "code": "def average_rating(ratings):\n    return sum(ratings) // len(ratings)\n",
+  "solution": "def average_rating(ratings):\n    return sum(ratings) / len(ratings)\n",
+  "hint": "Python has two division operators. What's the difference between `/` and `//`?",
+  "explanation": "`//` is floor division: it throws away the fractional part. 4 and 5 stars average to 4.5, not 4. Use `/` for true division.",
+  "tests": [
+    {
+      "args": [
+        [
+          4,
+          4
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "args": [
+        [
+          4,
+          5
+        ]
+      ],
+      "expected": 4.5
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": 1.6666666666666667
+    }
+  ]
+}

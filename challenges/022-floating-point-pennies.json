@@ -1,0 +1,59 @@
+{
+  "id": 22,
+  "title": "Floating Point Pennies",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "floating point",
+    "money"
+  ],
+  "description": "can_afford(prices, budget) returns True if the total of prices (in dollars) fits in the budget. A customer with exactly enough money gets turned away.",
+  "entry": "can_afford",
+  "code": "def can_afford(prices, budget):\n    return sum(prices) <= budget\n",
+  "solution": "def can_afford(prices, budget):\n    total_cents = sum(round(price * 100) for price in prices)\n    return total_cents <= round(budget * 100)\n",
+  "hint": "Try `0.1 + 0.2` in a Python shell.",
+  "explanation": "Floats are stored in binary, and most decimal fractions can't be represented exactly: `0.1 + 0.2` is `0.30000000000000004`, which is more than `0.3`. For money, work in whole cents (integers) or use `decimal.Decimal`.",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2
+        ],
+        5
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        [
+          3,
+          3
+        ],
+        5
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        [
+          0.1,
+          0.2
+        ],
+        0.3
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        [
+          0.7,
+          0.1,
+          0.2
+        ],
+        1.0
+      ],
+      "expected": true
+    }
+  ]
+}

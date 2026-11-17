@@ -1,0 +1,41 @@
+{
+  "id": 14,
+  "title": "Palindrome Problems",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "strings"
+  ],
+  "description": "is_palindrome(text) checks whether text reads the same backwards, ignoring spaces, punctuation and upper/lower case.",
+  "entry": "is_palindrome",
+  "code": "def is_palindrome(text):\n    cleaned = \"\".join(ch for ch in text if ch.isalnum())\n    return cleaned == cleaned[::-1]\n",
+  "solution": "def is_palindrome(text):\n    cleaned = \"\".join(ch.lower() for ch in text if ch.isalnum())\n    return cleaned == cleaned[::-1]\n",
+  "hint": "Is \"T\" equal to \"t\"?",
+  "explanation": "The code strips spaces and punctuation but forgets about case, so \"Taco cat\" becomes \"Tacocat\", which isn't the same reversed. Lowercase each character while cleaning.",
+  "tests": [
+    {
+      "args": [
+        "racecar"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "Taco cat"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "expected": true
+    }
+  ]
+}

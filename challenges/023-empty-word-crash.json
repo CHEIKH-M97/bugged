@@ -1,0 +1,42 @@
+{
+  "id": 23,
+  "title": "Empty Word Crash",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "strings",
+    "edge cases"
+  ],
+  "description": "title_case(text) capitalizes the first letter of every word and keeps the spacing exactly as it was, double spaces included.",
+  "entry": "title_case",
+  "code": "def title_case(text):\n    words = text.split(\" \")\n    return \" \".join(word[0].upper() + word[1:] for word in words)\n",
+  "solution": "def title_case(text):\n    words = text.split(\" \")\n    return \" \".join(word[:1].upper() + word[1:] for word in words)\n",
+  "hint": "What does `\"a  b\".split(\" \")` return? Look at the middle item.",
+  "explanation": "Splitting on a single space turns double spaces into empty strings, and `\"\"[0]` raises IndexError. Slicing never raises: `word[:1]` is `\"\"` for an empty word, so the code handles it without a special case.",
+  "tests": [
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected": "Hello World"
+    },
+    {
+      "args": [
+        "python"
+      ],
+      "expected": "Python"
+    },
+    {
+      "args": [
+        "hello  world"
+      ],
+      "expected": "Hello  World"
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expected": ""
+    }
+  ]
+}

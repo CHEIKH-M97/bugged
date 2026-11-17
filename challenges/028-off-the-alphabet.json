@@ -1,0 +1,46 @@
+{
+  "id": 28,
+  "title": "Off the Alphabet",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "strings",
+    "modulo"
+  ],
+  "description": "caesar(text, shift) shifts every lowercase letter forward in the alphabet, wrapping around from z to a. Other characters stay the same.",
+  "entry": "caesar",
+  "code": "def caesar(text, shift):\n    return \"\".join(\n        chr(ord(ch) + shift) if ch.isalpha() else ch\n        for ch in text\n    )\n",
+  "solution": "def caesar(text, shift):\n    return \"\".join(\n        chr((ord(ch) - ord(\"a\") + shift) % 26 + ord(\"a\")) if ch.isalpha() else ch\n        for ch in text\n    )\n",
+  "hint": "What comes after \"z\" in the character table?",
+  "explanation": "Adding to the character code walks past \"z\" into punctuation (`{`, `|`, ...). Convert the letter to a 0-25 position, add the shift, wrap with `% 26`, and convert back.",
+  "tests": [
+    {
+      "args": [
+        "abc",
+        1
+      ],
+      "expected": "bcd"
+    },
+    {
+      "args": [
+        "hello world",
+        0
+      ],
+      "expected": "hello world"
+    },
+    {
+      "args": [
+        "xyz",
+        3
+      ],
+      "expected": "abc"
+    },
+    {
+      "args": [
+        "zoo",
+        1
+      ],
+      "expected": "app"
+    }
+  ]
+}

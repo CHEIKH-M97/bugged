@@ -1,0 +1,46 @@
+{
+  "id": 30,
+  "title": "Cache Collision",
+  "difficulty": 4,
+  "language": "python",
+  "topics": [
+    "caching",
+    "global state"
+  ],
+  "description": "price_with_tax(price, country) adds the country's sales tax and caches results to save time. French and German customers sometimes get each other's prices.",
+  "entry": "price_with_tax",
+  "code": "TAX_RATES = {\"FR\": 0.20, \"DE\": 0.19, \"US\": 0.0}\n\n_cache = {}\n\n\ndef price_with_tax(price, country):\n    if price in _cache:\n        return _cache[price]\n\n    result = round(price * (1 + TAX_RATES[country]), 2)\n    _cache[price] = result\n    return result\n",
+  "solution": "TAX_RATES = {\"FR\": 0.20, \"DE\": 0.19, \"US\": 0.0}\n\n_cache = {}\n\n\ndef price_with_tax(price, country):\n    key = (price, country)\n    if key in _cache:\n        return _cache[key]\n\n    result = round(price * (1 + TAX_RATES[country]), 2)\n    _cache[key] = result\n    return result\n",
+  "hint": "The result depends on two inputs. How many does the cache key use?",
+  "explanation": "The cache key only uses `price`, but the result depends on `price` and `country`. The first country to ask for a price wins, and everyone else gets that answer. A cache key must include every input that affects the result. Here that's `(price, country)`, which is what `functools.lru_cache` would do for you.",
+  "tests": [
+    {
+      "args": [
+        100,
+        "FR"
+      ],
+      "expected": 120
+    },
+    {
+      "args": [
+        100,
+        "DE"
+      ],
+      "expected": 119
+    },
+    {
+      "args": [
+        50,
+        "US"
+      ],
+      "expected": 50
+    },
+    {
+      "args": [
+        50,
+        "FR"
+      ],
+      "expected": 60
+    }
+  ]
+}

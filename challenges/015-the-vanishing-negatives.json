@@ -1,0 +1,68 @@
+{
+  "id": 15,
+  "title": "The Vanishing Negatives",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "lists",
+    "iteration"
+  ],
+  "description": "remove_negatives(numbers) returns the list without its negative numbers, keeping the order. Some negatives survive.",
+  "entry": "remove_negatives",
+  "code": "def remove_negatives(numbers):\n    for n in numbers:\n        if n < 0:\n            numbers.remove(n)\n    return numbers\n",
+  "solution": "def remove_negatives(numbers):\n    return [n for n in numbers if n >= 0]\n",
+  "hint": "What happens to the loop's position when you remove an item from the list you're looping over?",
+  "explanation": "Removing items while iterating shifts everything left, so the loop skips the element right after each removal. Two negatives in a row means the second survives. Build a new list instead of mutating the one you're iterating.",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          -1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "args": [
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    },
+    {
+      "args": [
+        [
+          -1,
+          -2,
+          3
+        ]
+      ],
+      "expected": [
+        3
+      ]
+    },
+    {
+      "args": [
+        [
+          -5,
+          -5,
+          -5,
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ]
+}

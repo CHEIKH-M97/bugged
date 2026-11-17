@@ -1,0 +1,75 @@
+{
+  "id": 25,
+  "title": "Shared Roster",
+  "difficulty": 4,
+  "language": "python",
+  "topics": [
+    "classes",
+    "class attributes"
+  ],
+  "description": "build_teams(assignments) takes [person, team] pairs and returns a dictionary mapping each team name to its members, in order. Everyone ends up on every team.",
+  "entry": "build_teams",
+  "code": "class Team:\n    members = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def add(self, person):\n        self.members.append(person)\n\n\ndef build_teams(assignments):\n    teams = {}\n    for person, team_name in assignments:\n        if team_name not in teams:\n            teams[team_name] = Team(team_name)\n        teams[team_name].add(person)\n    return {name: team.members for name, team in teams.items()}\n",
+  "solution": "class Team:\n    def __init__(self, name):\n        self.name = name\n        self.members = []\n\n    def add(self, person):\n        self.members.append(person)\n\n\ndef build_teams(assignments):\n    teams = {}\n    for person, team_name in assignments:\n        if team_name not in teams:\n            teams[team_name] = Team(team_name)\n        teams[team_name].add(person)\n    return {name: team.members for name, team in teams.items()}\n",
+  "hint": "Where does `members` live: on each Team object, or on the Team class itself?",
+  "explanation": "`members = []` in the class body creates one class attribute shared by every instance and by every call. `self.members.append` finds that shared list. Create per-instance state in `__init__` with `self.members = []`.",
+  "tests": [
+    {
+      "args": [
+        [
+          [
+            "ana",
+            "red"
+          ]
+        ]
+      ],
+      "expected": {
+        "red": [
+          "ana"
+        ]
+      }
+    },
+    {
+      "args": [
+        [
+          [
+            "bo",
+            "red"
+          ],
+          [
+            "cy",
+            "blue"
+          ]
+        ]
+      ],
+      "expected": {
+        "red": [
+          "bo"
+        ],
+        "blue": [
+          "cy"
+        ]
+      }
+    },
+    {
+      "args": [
+        [
+          [
+            "di",
+            "green"
+          ],
+          [
+            "ed",
+            "green"
+          ]
+        ]
+      ],
+      "expected": {
+        "green": [
+          "di",
+          "ed"
+        ]
+      }
+    }
+  ]
+}

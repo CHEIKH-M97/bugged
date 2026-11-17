@@ -1,0 +1,54 @@
+{
+  "id": 4,
+  "title": "The Sticky Tags",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "default arguments",
+    "mutability"
+  ],
+  "description": "add_tag(tag, tags) appends a tag to a list of tags and returns it. If no list is given, it should start a new one. The first call works...",
+  "entry": "add_tag",
+  "code": "def add_tag(tag, tags=[]):\n    tags.append(tag)\n    return tags\n",
+  "solution": "def add_tag(tag, tags=None):\n    if tags is None:\n        tags = []\n    tags.append(tag)\n    return tags\n",
+  "hint": "The tests run one after another in the same program. When is `[]` in the function signature created?",
+  "explanation": "Default values are evaluated once, when the function is defined, not on every call. All calls without `tags` share the same list, so tags pile up between calls. Use `None` as the default and create a new list inside the function.",
+  "tests": [
+    {
+      "args": [
+        "python"
+      ],
+      "expected": [
+        "python"
+      ]
+    },
+    {
+      "args": [
+        "bug"
+      ],
+      "expected": [
+        "bug"
+      ]
+    },
+    {
+      "args": [
+        "fix",
+        [
+          "git"
+        ]
+      ],
+      "expected": [
+        "git",
+        "fix"
+      ]
+    },
+    {
+      "args": [
+        "done"
+      ],
+      "expected": [
+        "done"
+      ]
+    }
+  ]
+}

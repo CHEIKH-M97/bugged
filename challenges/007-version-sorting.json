@@ -1,0 +1,68 @@
+{
+  "id": 7,
+  "title": "Version Sorting",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "sorting",
+    "strings vs numbers"
+  ],
+  "description": "sort_versions(versions) sorts version strings like \"1.10\" and \"1.9\" from oldest to newest. The key function splits on dots, which looks right...",
+  "entry": "sort_versions",
+  "code": "def sort_versions(versions):\n    return sorted(versions, key=lambda v: v.split(\".\"))\n",
+  "solution": "def sort_versions(versions):\n    return sorted(versions, key=lambda v: [int(part) for part in v.split(\".\")])\n",
+  "hint": "Is \"10\" less than \"9\"? As strings, yes.",
+  "explanation": "Splitting gives lists of strings, and strings compare character by character: \"10\" < \"9\" because \"1\" < \"9\". Convert each part to `int` so the parts compare as numbers.",
+  "tests": [
+    {
+      "args": [
+        [
+          "1.0",
+          "2.0"
+        ]
+      ],
+      "expected": [
+        "1.0",
+        "2.0"
+      ]
+    },
+    {
+      "args": [
+        [
+          "0.1",
+          "0.0.1"
+        ]
+      ],
+      "expected": [
+        "0.0.1",
+        "0.1"
+      ]
+    },
+    {
+      "args": [
+        [
+          "1.2",
+          "1.10",
+          "1.9"
+        ]
+      ],
+      "expected": [
+        "1.2",
+        "1.9",
+        "1.10"
+      ]
+    },
+    {
+      "args": [
+        [
+          "10.0",
+          "9.1"
+        ]
+      ],
+      "expected": [
+        "9.1",
+        "10.0"
+      ]
+    }
+  ]
+}

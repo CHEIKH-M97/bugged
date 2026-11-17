@@ -1,0 +1,90 @@
+{
+  "id": 26,
+  "title": "Lost in Chunks",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "slicing",
+    "range"
+  ],
+  "description": "chunk(items, size) splits a list into consecutive pieces of length size. The last piece may be shorter.",
+  "entry": "chunk",
+  "code": "def chunk(items, size):\n    return [items[i:i + size] for i in range(0, len(items) - size, size)]\n",
+  "solution": "def chunk(items, size):\n    return [items[i:i + size] for i in range(0, len(items), size)]\n",
+  "hint": "List the start indexes the range produces for 6 items and size 2.",
+  "explanation": "`range(0, len(items) - size, size)` stops one chunk too early, so the last chunk is dropped. Slicing past the end of a list is safe in Python, so `range(0, len(items), size)` handles a short final chunk on its own.",
+  "tests": [
+    {
+      "args": [
+        [],
+        3
+      ],
+      "expected": []
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        2
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        [
+          1
+        ],
+        5
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    }
+  ]
+}

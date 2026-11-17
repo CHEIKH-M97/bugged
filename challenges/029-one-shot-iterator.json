@@ -1,0 +1,55 @@
+{
+  "id": 29,
+  "title": "One-Shot Iterator",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "iterators",
+    "generators"
+  ],
+  "description": "min_max(raw) takes numbers as strings and returns [smallest, largest] as numbers. It crashes every time.",
+  "entry": "min_max",
+  "code": "def min_max(raw):\n    values = map(float, raw)\n    return [min(values), max(values)]\n",
+  "solution": "def min_max(raw):\n    values = list(map(float, raw))\n    return [min(values), max(values)]\n",
+  "hint": "`map` doesn't return a list. What's left in it after `min()` has read every value?",
+  "explanation": "`map` returns a lazy iterator, and an iterator can only be consumed once. `min()` reads every value, so `max()` gets an empty iterator and raises ValueError. Store the values in a list if you need to go over them more than once.",
+  "tests": [
+    {
+      "args": [
+        [
+          "3",
+          "1",
+          "2"
+        ]
+      ],
+      "expected": [
+        1,
+        3
+      ]
+    },
+    {
+      "args": [
+        [
+          "5"
+        ]
+      ],
+      "expected": [
+        5,
+        5
+      ]
+    },
+    {
+      "args": [
+        [
+          "-2.5",
+          "10",
+          "0"
+        ]
+      ],
+      "expected": [
+        -2.5,
+        10
+      ]
+    }
+  ]
+}

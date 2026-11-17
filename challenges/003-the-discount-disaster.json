@@ -1,0 +1,46 @@
+{
+  "id": 3,
+  "title": "The Discount Disaster",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "units",
+    "arithmetic"
+  ],
+  "description": "discounted_price(price, discount) applies a percentage discount: discount=10 means 10% off. The math looks reasonable, but the final price is wrong.",
+  "entry": "discounted_price",
+  "code": "def discounted_price(price, discount):\n    return price - price * discount\n",
+  "solution": "def discounted_price(price, discount):\n    return price - price * discount / 100\n",
+  "hint": "What does `discount` contain: 0.10 or 10?",
+  "explanation": "The discount arrives as a percentage (10 for 10%), but the formula treats it as a fraction (0.10). The only test that passes is 0% off. Divide by 100 first. Mixing up units is one of the most common real-world bugs: always know what unit a value is in.",
+  "tests": [
+    {
+      "args": [
+        100,
+        0
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        100,
+        10
+      ],
+      "expected": 90
+    },
+    {
+      "args": [
+        200,
+        25
+      ],
+      "expected": 150
+    },
+    {
+      "args": [
+        80,
+        50
+      ],
+      "expected": 40
+    }
+  ]
+}

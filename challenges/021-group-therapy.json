@@ -1,0 +1,69 @@
+{
+  "id": 21,
+  "title": "Group Therapy",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "dictionaries"
+  ],
+  "description": "group_by_length(words) returns a dictionary that maps each word length to the list of words with that length, in their original order.",
+  "entry": "group_by_length",
+  "code": "def group_by_length(words):\n    groups = {}\n    for word in words:\n        groups[len(word)] = [word]\n    return groups\n",
+  "solution": "def group_by_length(words):\n    groups = {}\n    for word in words:\n        groups.setdefault(len(word), []).append(word)\n    return groups\n",
+  "hint": "What happens to a key's existing list when the same key is assigned again?",
+  "explanation": "`groups[key] = [word]` replaces the list every time, so only the last word of each length survives. Append to the existing list instead: `setdefault` (or `collections.defaultdict(list)`) creates the list only the first time.",
+  "tests": [
+    {
+      "args": [
+        [
+          "a",
+          "bb"
+        ]
+      ],
+      "expected": {
+        "1": [
+          "a"
+        ],
+        "2": [
+          "bb"
+        ]
+      }
+    },
+    {
+      "args": [
+        [
+          "hi",
+          "yo",
+          "hey"
+        ]
+      ],
+      "expected": {
+        "2": [
+          "hi",
+          "yo"
+        ],
+        "3": [
+          "hey"
+        ]
+      }
+    },
+    {
+      "args": [
+        [
+          "cat",
+          "dog",
+          "owl",
+          "bee"
+        ]
+      ],
+      "expected": {
+        "3": [
+          "cat",
+          "dog",
+          "owl",
+          "bee"
+        ]
+      }
+    }
+  ]
+}

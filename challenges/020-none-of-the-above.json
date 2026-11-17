@@ -1,0 +1,60 @@
+{
+  "id": 20,
+  "title": "None of the Above",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "lists",
+    "return values"
+  ],
+  "description": "top_three(scores) returns the three highest scores, highest first.",
+  "entry": "top_three",
+  "code": "def top_three(scores):\n    ranked = scores.sort(reverse=True)\n    return ranked[:3]\n",
+  "solution": "def top_three(scores):\n    ranked = sorted(scores, reverse=True)\n    return ranked[:3]\n",
+  "hint": "What does `list.sort()` return?",
+  "explanation": "`list.sort()` sorts the list in place and returns `None`, so `ranked` is None. Use `sorted(scores, ...)`, which returns a new sorted list (and doesn't modify the caller's list).",
+  "tests": [
+    {
+      "args": [
+        [
+          10,
+          50,
+          30,
+          20
+        ]
+      ],
+      "expected": [
+        50,
+        30,
+        20
+      ]
+    },
+    {
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        1
+      ]
+    },
+    {
+      "args": [
+        [
+          7,
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": [
+        7,
+        7,
+        7
+      ]
+    }
+  ]
+}

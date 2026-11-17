@@ -1,0 +1,73 @@
+{
+  "id": 13,
+  "title": "Copy Cat Grid",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "lists",
+    "references"
+  ],
+  "description": "make_board(rows, cols, row, col) builds a rows × cols grid of zeros and marks a single cell with 1. One mark appears in every row.",
+  "entry": "make_board",
+  "code": "def make_board(rows, cols, row, col):\n    board = [[0] * cols] * rows\n    board[row][col] = 1\n    return board\n",
+  "solution": "def make_board(rows, cols, row, col):\n    board = [[0] * cols for _ in range(rows)]\n    board[row][col] = 1\n    return board\n",
+  "hint": "`[x] * 3` makes a list with the same `x` three times. Is it three copies of the row, or three references to one row?",
+  "explanation": "`[[0] * cols] * rows` repeats a reference to the same inner list, so every row is the same object and changing one changes them all. Build a new row for each index with a list comprehension.",
+  "tests": [
+    {
+      "args": [
+        1,
+        3,
+        0,
+        1
+      ],
+      "expected": [
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        2,
+        2,
+        0,
+        0
+      ],
+      "expected": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        3,
+        2,
+        2,
+        1
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

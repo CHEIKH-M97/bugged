@@ -1,0 +1,46 @@
+{
+  "id": 10,
+  "title": "Bitwise Bouncer",
+  "difficulty": 3,
+  "language": "python",
+  "topics": [
+    "operators",
+    "precedence"
+  ],
+  "description": "can_enter(age, has_ticket) should return True only for people aged 18 or more who have a ticket. Somehow everyone gets in.",
+  "entry": "can_enter",
+  "code": "def can_enter(age, has_ticket):\n    return age >= 18 & has_ticket\n",
+  "solution": "def can_enter(age, has_ticket):\n    return age >= 18 and has_ticket\n",
+  "hint": "`&` is not the same as `and`. Which happens first: `>=` or `&`?",
+  "explanation": "`&` is the bitwise AND operator, and it binds tighter than `>=`. The code computes `age >= (18 & has_ticket)`. `18 & True` and `18 & False` are both 0, so it's always `age >= 0`. Use the logical operator `and`.",
+  "tests": [
+    {
+      "args": [
+        25,
+        true
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        25,
+        false
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        10,
+        true
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        10,
+        false
+      ],
+      "expected": false
+    }
+  ]
+}

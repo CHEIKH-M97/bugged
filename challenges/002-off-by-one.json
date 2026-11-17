@@ -1,0 +1,67 @@
+{
+  "id": 2,
+  "title": "Off By One",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "loops",
+    "range"
+  ],
+  "description": "find_largest(numbers) should return the largest number in a non-empty list. It works sometimes... but not always.",
+  "entry": "find_largest",
+  "code": "def find_largest(numbers):\n    largest = numbers[0]\n\n    for i in range(len(numbers) - 1):\n        if numbers[i] > largest:\n            largest = numbers[i]\n\n    return largest\n",
+  "solution": "def find_largest(numbers):\n    largest = numbers[0]\n\n    for i in range(len(numbers)):\n        if numbers[i] > largest:\n            largest = numbers[i]\n\n    return largest\n",
+  "hint": "Which indexes does `range(len(numbers) - 1)` produce for a list of 3 items?",
+  "explanation": "`range(n - 1)` stops at index `n - 2`, so the last element is never checked. The tests that pass all have their maximum somewhere else. Use `range(len(numbers))`, or better, loop over the values directly: `for number in numbers`.",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          5,
+          3
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "args": [
+        [
+          10,
+          2,
+          7
+        ]
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "args": [
+        [
+          2,
+          4,
+          9
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": 4
+    }
+  ]
+}

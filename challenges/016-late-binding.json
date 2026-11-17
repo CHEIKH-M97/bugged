@@ -1,0 +1,50 @@
+{
+  "id": 16,
+  "title": "Late Binding",
+  "difficulty": 4,
+  "language": "python",
+  "topics": [
+    "closures",
+    "lambdas"
+  ],
+  "description": "multiply_all(n, x) builds n functions (\"times 0\", \"times 1\", ..., \"times n-1\") and applies each one to x. Every function seems to multiply by the same number.",
+  "entry": "multiply_all",
+  "code": "def multiply_all(n, x):\n    multipliers = [lambda value: value * i for i in range(n)]\n    return [multiply(x) for multiply in multipliers]\n",
+  "solution": "def multiply_all(n, x):\n    multipliers = [lambda value, i=i: value * i for i in range(n)]\n    return [multiply(x) for multiply in multipliers]\n",
+  "hint": "When does a lambda look up the value of `i`: when it's created, or when it's called?",
+  "explanation": "Closures capture variables, not values. Each lambda looks up `i` when it is called, after the loop has finished, so they all see the last value. Bind the current value at creation time with a default argument (`i=i`) or `functools.partial`.",
+  "tests": [
+    {
+      "args": [
+        1,
+        5
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "args": [
+        3,
+        2
+      ],
+      "expected": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "args": [
+        4,
+        1
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

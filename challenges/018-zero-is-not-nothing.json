@@ -1,0 +1,36 @@
+{
+  "id": 18,
+  "title": "Zero Is Not Nothing",
+  "difficulty": 2,
+  "language": "python",
+  "topics": [
+    "truthiness",
+    "None"
+  ],
+  "description": "describe_score(score) returns \"No score yet\" when score is None, and \"Score: <score>\" otherwise. Players who scored 0 are upset.",
+  "entry": "describe_score",
+  "code": "def describe_score(score):\n    if not score:\n        return \"No score yet\"\n    return f\"Score: {score}\"\n",
+  "solution": "def describe_score(score):\n    if score is None:\n        return \"No score yet\"\n    return f\"Score: {score}\"\n",
+  "hint": "Which values make `not score` true?",
+  "explanation": "`not score` is true for every falsy value: None, but also 0, 0.0 and \"\". When you mean \"missing\", check for it explicitly with `score is None`.",
+  "tests": [
+    {
+      "args": [
+        null
+      ],
+      "expected": "No score yet"
+    },
+    {
+      "args": [
+        42
+      ],
+      "expected": "Score: 42"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected": "Score: 0"
+    }
+  ]
+}

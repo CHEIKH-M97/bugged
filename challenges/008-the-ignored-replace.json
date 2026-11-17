@@ -1,0 +1,39 @@
+{
+  "id": 8,
+  "title": "The Ignored Replace",
+  "difficulty": 1,
+  "language": "python",
+  "topics": [
+    "strings",
+    "immutability"
+  ],
+  "description": "censor(text, word) replaces every occurrence of word with asterisks of the same length.",
+  "entry": "censor",
+  "code": "def censor(text, word):\n    text.replace(word, \"*\" * len(word))\n    return text\n",
+  "solution": "def censor(text, word):\n    return text.replace(word, \"*\" * len(word))\n",
+  "hint": "Does `str.replace` change the string, or give you a new one?",
+  "explanation": "Strings are immutable in Python. `replace` returns a new string and leaves the original alone. The result was thrown away. Return (or assign) the value that `replace` gives back.",
+  "tests": [
+    {
+      "args": [
+        "hello world",
+        "bug"
+      ],
+      "expected": "hello world"
+    },
+    {
+      "args": [
+        "this bug is a bug",
+        "bug"
+      ],
+      "expected": "this *** is a ***"
+    },
+    {
+      "args": [
+        "password123",
+        "123"
+      ],
+      "expected": "password***"
+    }
+  ]
+}
